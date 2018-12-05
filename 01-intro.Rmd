@@ -155,3 +155,182 @@ class(2)
 class(2L)
 ```
 
+`character` data is anything surrounded by quotations. Generally, these are things like words and sentences.
+
+```{r}
+my_characters <- "this is a character"
+class(my_characters)
+```
+
+You can't add `character` objects to numerics (integers will be counted as a numeric, because they are a number). Most data types have a function to check if it is indeed that data type. You can check to see if a variable is a `character` by using the `is.character()` function. It will check the object's class, and tell you if it matches with `character`. The output is a `logical`. 
+
+`logical` data types are things like `TRUE` or `FALSE`. What is interesting is that `TRUE` is actually the value 1, and `FALSE` is actually 0. So you can add `TRUE` to a number. Funny, huh?
+
+```{r}
+TRUE + 5
+```
+
+
+Well, that just about covers the data types we will use. Now, it's not often that we'll just want to use 1 number or value for our work. Let's get into data structures.
+
+## Data Structures
+
+
+### Vectors
+The simplest data structure in R is the vector. Vectors are "one-dimensional arrays", that's fancy speak for an object that holds many elements of the same type. So a vector will [almost] always be `numeric` (`integer` counts as numeric, remember?), `character`, or `logical`.
+
+We create vectors by using the function `c()`, which stands for _combine_. Each element of the vector is separated by a comma. 
+
+```{r}
+c(1, 2)
+```
+
+If you put a `character` (or a `string`, I will use both interchangeably from here on), in a numeric vector, R will _coerce_ (force) the numbers to be treated like a character (meaning you can't do math with them). 
+
+```{r}
+c(1, 2, "characters go here")
+```
+
+Notice how the numbers are in quotes now. So what happens when you put a `logical` inside a numeric?
+
+```{r}
+c(FALSE, 1, TRUE)
+```
+
+See how that vector contains 3 elements, `0 1 1`? Remember that that `FALSE` is actually a 0 and `TRUE` is a 1!
+
+Now, what if we want to tell R that there is missing data? We use `NA` to indicate missing data. 
+
+```{r}
+c(1, 2, NA, 4)
+```
+
+Here is a fun shortcut: if you want to create a sequence of integers, you can use a `:`. If I wanted the numbers 1 through 20, I could write `1:20`. 
+
+```{r}
+my_ints <- 1:20
+my_ints # this prints it, remember?
+```
+
+We know that there are 20 elements in this vector, this means that the vector has a `length` of 20. We can always find out how long (or how many elements are in) a vector by supplying the vector to the `length()` function. 
+
+```{r}
+# how long is `my_ints`?
+length(my_ints)
+```
+Ah, just as anticipated! Say we wanted to add 10 to each value, we could supply the variable name in a basic arithmetic statement.
+
+```{r}
+my_ints + 10
+```
+Say we wanted to only have the 10th element from `my_ints`, how would we get it? I mean, we know it's 10, but we can't write out every value we want every time. We can access it through an _index_. Indexes are accessed using brackets immediately after the object that we want to access.
+
+```{r}
+my_ints[10]
+```
+
+We can access multiple values in this vector by supplying a vector to our vectors index (think about that one for a second). To grab the 1st, 10th, and 20th element of our vector we would put a vector with the values `1, 10, 20` in our index.
+
+```{r}
+my_ints[c(1, 10, 20)]
+```
+But since vectors can be stored in object, we can create a vector called `index` and substitute that!
+
+```{r}
+# create an index vector
+index <- c(1, 10, 20)
+
+# use that index to select from our vector
+my_ints[index]
+```
+
+
+
+Many of you are probably quite familiar with Excel for doing your number crunching. The table look with columns and rows is a very useful way of visualizing and handling data. In R, we use something called data frames to do this.
+
+### data frames
+
+Unlike vectors, data frames are two-dimensional. I like to think of making a graph back in school where I'd know the x and y coordinates. We can think of our rows as x coordinates, and columns as y coordinates. Each coordinate pair makes a value pair in our data frame. Our two-dimensional data frames are actually made up of one-dimensional objects (vectors)! 
+
+Say we have two vectors `x` and `y`.
+```{r}
+x <- 1:10
+y <- 10:1
+
+x
+y
+```
+Notice how they are the same length! We can think of each element (observation) as one row. These vectors will become our columns in our data frame. Data frames can be constructed with `data.frame()`. The first argument (value) will be the vector which will become a column, and each preceding argument (separated with a comma) will be another column.
+
+```{r}
+df <- data.frame(x, y)
+df
+```
+
+Look at how nice that is!
+
+So, remember how we accessed values from vectors using `[]` and a value(s)? To get values from a data frame, we need to supply the brackets with x, y coordinates! This is because a data frame is two-dimensional, whereas the vector was 1 dimensional.
+
+If we want to get the first value from our x column, we need to specify that we want row (x) 1, and column (y) 1. Generally, this looks like `df[x,y]`. 
+
+```{r}
+df[1,1]
+```
+
+If we want to get whole rows, we leave the value in the column area empty (but remember the comma!).
+```{r}
+df[1,]
+```
+
+
+Now the same rule of thumb applies for columns, just leave the x value empty, but remember the comma.
+
+```{r}
+df[,1]
+```
+
+Additionally, we can access the underlying columns another way, by using the `$` operator. To do this we would write the data frame name, followed by `$` and the column name, i.e. `data_frame$col_name`.
+
+To grab the x column of `df` we can do it like.
+```{r}
+df$x
+```
+
+We can do math with our columns too!
+
+```{r}
+df$x * df$y
+```
+
+
+
+## Recap
+
+Alright, there are a few key take aways here. 
+
+1. We can use R to do some math
+2. We can create variables which take on values
+    - we can even do math on those variables
+3. We can compare objects and values using logical statements
+4. We can store many values of the same type in one-dimensional vectors
+5. We can make two-dimensional tables from multiple one-dimensional vectors
+
+## HW
+
+* Create a vector called `z` which is the square root of each element of the vector `y`.
+* Create a data frame called `xyz` which has 3 columns made from the vectors `x`, `y`, and `z`. 
+* Check to see if each value of the column `x` is greater than or equal to the corresponding value in the `y` column
+
+
+### HW Solutions
+```{r}
+# Create a vector z
+z <- sqrt(y)
+
+# create a new data frame
+xyz <- data.frame(x, y, z)
+
+# compare x and y
+xyz$x >= xyz$y
+```
+
