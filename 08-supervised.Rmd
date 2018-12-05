@@ -1,0 +1,3 @@
+# supervised learning 
+
+knn, svm, nb, rf, xgb

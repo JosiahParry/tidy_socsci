@@ -1,0 +1,3 @@
+# Ok, but where? (GIS)
+
+coordinate reference systems, projections, shapefiles, vector data, raster, point density, yah.

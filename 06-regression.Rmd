@@ -1,0 +1,3 @@
+# statistical modelling (Regression)
+
+simple linear, multiple linear, logistic.

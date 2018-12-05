@@ -1,0 +1,3 @@
+# Data preprocessing 
+
+center, scale, standardize, normalize, cross validation, dimensionality reduction, feature selection

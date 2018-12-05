@@ -1,0 +1,5 @@
+book_filename: "tidy_socsci"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "

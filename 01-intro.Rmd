@@ -1,0 +1,157 @@
+
+# The Basics {#intro}
+
+This section will go over the different types of data that we will use in R. Before we get into that, we need to know the basic workings of R. We can use R like a calculator. To be honest, everything that follows might be better learned from DataCamp's [Free Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r). But if you're still with me, I'm going to go over this stuff kind of quickly.
+
+## Arithmetic Operators 
+
+- `^` : exponentiation (exponents)  [E]
+- `*` : multiplication [M]
+- `/` : division [D]
+- `+` : addition [A]
+- `-` : subtraction [S]
+
+These can be used together in parentheses [P] `( )` to determine the order of operations (`PEMDAS`)
+
+```{r}
+2 ^ 2
+2 * 3
+4 / 2
+1 + 3
+3 - 2
+```
+
+## Creating Variables
+
+So, as I said, knowledge of substition is a prerequisite. We can create new variables in our R environment ([what's an environment you ask?](https://www.r-bloggers.com/environments-in-r/)) that can be used to reference things. There are many types of variables, but will get into that later. Let's work with something we're all familiar with `x`. Note: I will use the words variable and object interchangeably throughout this. 
+
+Say we want to solve `y = 3x + 2` for when `x = 5`. We can create a variable for `x` and then make one for `y`. We create variables with the _assignment operator/arrow_, `<-`. Mr. Jared Lander taught me that `x <- 1` formally reads as _"x gets 1". To me, it just means they are set equal, like an equation. 
+
+```{r}
+# This is a comment. This won't be run by R. 
+x <- 1
+
+# You can print the variable by just writing it 
+x
+```
+
+Now let's try some math with the variable.
+
+```{r}
+x * 3
+x + 2
+```
+
+Alright, you're getting the idea. How about using our formula above?
+
+```{r}
+3 * x + 2
+```
+
+Okay, now lets create a new object called, `y`, which is the output of the above operation. 
+
+```{r}
+y <- 3 * x + 2
+```
+
+Here, `y` takes on the value of whatever is to the right of it. This is the case whenever you assign any object. 
+
+## Logical operators 
+
+Alright, this might get a little tricky, and if you struggle try cheking out section [`5.2.2`](https://r4ds.had.co.nz/transform.html#introduction-2) of R for Data Science.
+
+* `<` : less than
+* `>` : greater than
+* `<=` : less than or equal to
+* `>=` : greater than or equal to
+* `==` : exactly equal (I like to think of it as _"are these the same thing?"_)
+* `!=` : not equal ( _"are these things not the same"_)
+
+Let's bring it back to early algebra. Let's say `x = 3` and `y = 5`. 
+
+Is `x` less than `y`?
+
+```{r}
+# set variables.
+x <- 3
+y <- 5
+
+x < y
+
+# greater than?
+x > y
+
+# less than or equal
+x <= y
+
+# greater or equal
+x >= y
+
+# exactly equal?
+x == y
+
+# not equal
+x != y
+```
+
+Alright, so now I want to talk about the `!` (called the _**bang**_ operator) and its nuance. See how we put `!` in front of our `=`? The bang operator essentially checks the opposite of a thing. So in this case it checked the opposite of equals. If we put `!` in front of a logical statement, it will reverse the outcome. 
+
+```{r}
+1 == 1
+
+!(1 == 1)
+```
+
+Now I want to introduce two more logical operators, **and** (`&`), and **or** (`|`). `&` checks multiple conditions and will return `TRUE` only if they are both `TRUE`. `|` will return `TRUE` when one of the conditions is `TRUE`. 
+
+Now for an illustrative example for `&` statements :
+
+```{r}
+# We have TRUE and TRUE, this should be false because they aren't both TRUE
+TRUE & FALSE 
+
+# both a TRUE, we expect TRUE
+TRUE & TRUE
+
+# The first statement is TRUE, but the second is not TRUE, expect FALSE
+(1 == 1) & (1 < 1)
+
+# The first statement is TRUE and the second is TRUE, expect TRUE
+(1 == 1) & (1 <= 1)
+```
+
+Illustrative `|` statements:
+
+Remember, only one condition needs to be `TRUE`.
+
+```{r}
+TRUE | TRUE
+
+TRUE | FALSE
+
+FALSE | FALSE
+```
+
+## Data Types!
+
+Okay! Now you've got an idea of the basics of R, maybe you've event caught on to some types of Data. There are 4 types of data that you will encounter on a regular basis. You've encountered 2 of them already. 
+
+So, think back to your Stat 101 class. You dealt with discrete, continuous, and nominal data. Discrete data was whole numbers, or integers. Continuous data had decimal points. And nominal data was essentially just words. 
+
+In R we will use:
+
+* `integer`: discrete
+* `numeric`: continuous
+* `character`: nominal
+* `logical` 
+
+To indicate to R that a number is an integer we put an `L` after the number ([why?](https://stackoverflow.com/questions/24350733/why-would-r-use-the-l-suffix-to-denote-an-integer)). We can always check an object's type by using the function `class()`. I'll go over functions briefly later, but you should be able to pick up the intuition—tl;dr, functions take an input and make an output.  
+
+```{r}
+# numbers are by default "numeric"
+class(2)
+
+# to specify an integer we can use the `L`
+class(2L)
+```
+

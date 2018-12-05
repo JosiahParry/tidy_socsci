@@ -1,0 +1,9 @@
+# text-mining / natual language processing (nlp)
+
+Honestly, just read tidy text 
+
+* text
+* tokens
+* stop words
+* sentiment
+* stemming

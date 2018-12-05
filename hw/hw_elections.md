@@ -31,7 +31,7 @@ HW:
 -   Create two new variables `pct_trump` and `pct_clinton` as the percentage of the vote they won
 -   Find the margin of victory for each state as an absolute value (always positive)
 -   Create a new variable calle `winner` that indicates the candidate that won.
--   use an `ifelse` statement
+    -   use an `ifelse` statement
 -   create a barchart that shows the % clinton vote by state. Color by winner
 -   Create a graph that shows only the states that hillary clinton won and show the margin of victory for each state.
 -   Create a graph that shows only the states that hillary clinton lost by and show the margin of victory for trump as a percentage of the total vote.

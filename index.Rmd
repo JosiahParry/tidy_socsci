@@ -1,0 +1,107 @@
+--- 
+title: "R for Social Science"
+author: "Josiah Parry"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+This is not a book in any sort of sense as [R for Data Science](https://r4ds.had.co.nz/),  [Advanced R](http://adv-r.had.co.nz/), or [SocViz](https://socviz.co/). I actually recommend those above. They have been great resources for me. This will be used as a place to collect notes on topics and their application for social science. 
+
+Each section will cover a topic and have associated assignments. This will be an extremely rough working document and is by no means intended to be of the utmost quality. 
+
+# Prerequisites {-}
+
+
+- R is installed
+- Working knowledge of basic algebra
+    - you know what PEMDAS stands for
+    - you know what substitution is 
+        - i.e. solve for `y` when `y = 3x - 3`, and `x = 1`
+- Working knowledge of basic statistics
+    - mean, median, mode
+    - you kind of remember what a t-test is and what a p-value is
+- Working knowledge of basic computer science principles
+    - logical values / statements (i.e. `true`, `false`, `true and false`, etc.)
+    - iteration
+    
+If you feel iffy about any of that, a quick google search will help, or just send it and continue.
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+
+## Outline {-}
+
+This outline will help me guide what I will write and cover. This is a list of the things that I think are important to know as a data scientist.
+
+- the basics 
+    - r as a calculator
+    - data types
+    - functions
+    - selecting object indexes
+    - tidyverse
+    - tibble
+    - selecting
+    - filter
+    - grouping
+    - summarising
+    - plotting
+    - reshaping
+    - presenting (Rmd)
+- data visualization
+    - univariate
+        - histogram
+        - density plot (pmf / cmf)
+        - violin plot
+        - boxplot
+    - multivariate
+        - scatter plot (2 numeric)
+        - bar plot (1 nominal 1 numeric)
+        - boxplot (1 nominal 1 numeric)
+        - violin plot (1 nominal 1 numeric)
+- map making (GIS)
+    - projections 
+    - coordinate reference systems
+    - vector data
+        - shapefiles
+        - sf package
+        - oh looks, its a dataframe
+        - making the map
+    - density maps 
+        - point density
+        - kernel density
+- statistical modeling (machine learning)
+    - supervised learning
+        - Linear Regression (continuous prediction)
+        - Logistic Regression (classification)
+- data preprocessing
+    - cross validation (k-fold)
+        - train, test, validate
+    - scaling & centering (standardization)
+    - normalization
+    - imputation
+    - dimensionality reduction
+      - pca / lda
+    - backward feature selection
+- supervised continued
+    - k-nearest neighbors
+    - Support Vector Machines (classification)
+    - Naive bayes (classification)
+    - random forest (regression / classification)
+    - gradient boosted trees (regression / classification)
+- Unsupervised learning
+    - hierarchical clustering (classification)
+    - k-means 
+    - neural networks
+- natual language processing / text mining
+
