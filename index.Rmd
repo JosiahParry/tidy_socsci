@@ -83,7 +83,9 @@ This outline will help me guide what I will write and cover. This is a list of t
 - statistical modeling (machine learning)
     - supervised learning
         - Linear Regression (continuous prediction)
+            - evaluation: R^2, MSE, RMSE, MAE
         - Logistic Regression (classification)
+            - evaluation: confusion matrix, auc, roc
 - data preprocessing
     - cross validation (k-fold)
         - train, test, validate

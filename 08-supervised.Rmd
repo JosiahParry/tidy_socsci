@@ -1,3 +1,5 @@
 # supervised learning 
 
 knn, svm, nb, rf, xgb
+
+https://shirinsplayground.netlify.com/2018/11/ml_basics_gbm/

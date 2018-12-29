@@ -1,3 +1,146 @@
 # Introducing the `tidyverse`
 
-select and filter
+Data frames will be the basis for many analyses. A set of packages makes working with them exceptionally easy. This is called the [`tidyverse`](https://www.tidyverse.org/). For most of our data manipulation a package called [`dplyr`](https://dplyr.tidyverse.org/) (d[ata] - plier ) will be the go to. For reading our data [`readr`](https://readr.tidyverse.org). What is nice, though, is that we can download all of these packages together in what is called the `tidyverse`. When we load the `tidyverse` we load most of the packages associated with it. 
+
+To do this run `install.packages("tidyverse")`. Load the package by running `library(tidyverse)`. 
+
+Before we can get to working with data, we will have to bring it into our environment. The data will be coming from a project from The Guardian called _"The Counted"_. The Guardian describes it as follows.
+
+> The Counted is a project by the Guardian – and you – working to count the number of people killed by police and other law enforcement agencies in the United States throughout 2015 and 2016, to monitor their demographics and to tell the stories of how they died.
+
+
+This dataset lives in the `counted.csv` file. `csv` stands for _**comma separated values**_. This means that each value has a comma in between it letting us know when the next column begins. 
+
+`readr` has a function called `read_csv()` which will take a csv and turn it into a dataframe for us to work with. 
+
+```{r}
+# load tidyverse packages
+library(tidyverse)
+
+
+# read in the dataset
+counted <- read_csv("data/the-counted/counted.csv")
+
+counted
+```
+
+## Selecting data
+
+
+In the last section we went over how to select individual columns using the `$` symbol and using bracket notation. Those methods can become quite cumbersome to work with. `dplyr` provides an alternative method for selecting individual columns. For this we can use the `select()` function. `select()` works quite intuitively. The first argument to the function is the dataframe which you select from. Every subsequent argument is the name or position of a column. 
+
+_Note: The first argument for [almost] every function in the `tidyverse` is the data. This will be very helpful to remember when we start using the pipe `%>%`_.
+
+
+Say we wanted to select the name of every person killed in 2015 and 2016. This is quite simple.
+
+```{r}
+select(counted, name)
+```
+
+
+Using the same notation we can select multiple columns. For example for name and age. The order that you select columns affects the order in which they appear in your output. As I put name first followed by age, the first column is name.
+
+```{r}
+select(counted, name, age)
+```
+
+
+Simple enough? Try it out. Try selecting `age`, `state`, `armed`, and `lawenforcementagency`. 
+
+Solution: 
+
+```{r}
+select(counted, age, state, armed, lawenforcementagency)
+```
+
+## Filtering your data
+
+Remember those logical statements in the last section? Those will be very useful now. We can constrain our dataset under a set of criteria to return a subset of the original data frame. 
+
+We can use our existing knowledge of vectors and data frames to create a subset of the data. Using our knowledge of logical vectors and bracket subsets, we can somewhat easily find all of the 20 year olds in our dataset. A solution to this would require us to create a logical vector to indicate the rows where the age is 20. Then we would have to supply that vector as an index to our dataframe to get our desired result. It would look like this:
+
+```{r}
+index <- counted$age == 20
+
+counted[index,]
+```
+
+`filter()` allows us to do this in a simpler manner. The first argument (suprise) is the dataframe that will be subsetted. Every following argument is a logical statement that will be applied to the dataset. Whenever the logical statement returns `TRUE` that row will be returned as shown in the above base R code. 
+
+
+```{r}
+filter(counted, age == 20)
+```
+
+Now, we can add another condition on to this function call to get all of the female twenty year olds. 
+
+```{r}
+filter(counted, age == 20, gender == "Female")
+```
+
+
+## Chaining functions
+
+The true power of the `tidyverse` comes from it's ability to chain functions after eachother. This is all enabled by the forward pipe operator `%>%`. The pipe operator takes the output of a function and provides that output as the first argument in the following function. You've seen how the first argument for every function here has been the data this is done purposefully to enable the use of the pipe. 
+
+As always, the most helpful way to wrap your head around this is to see it in action. Let's take one of the lines of code we used above and adapt it to use a pipe. We will select the name column of our data again. Previously we wrote `select(data_frame, col_name)`.
+
+```{r}
+select(counted, name)
+
+counted %>% 
+  select(name)
+```
+
+This gets the basic point across but doesn't adequately illustrate the power. So let's combine `filter()` and `select()` to get the names of all 20 year olds in our dataset. To do this we will first filter our dataset, then pipe it to our the select function. 
+
+```{r}
+counted %>% 
+  filter(age == 20) %>% 
+  select(name)
+```
+
+
+```{r}
+glimpse(counted)
+```
+
+## Creating / manipulating data
+
+Within most datasets there are what are called latent variables. These are varibles that can be created by manipulating one or more columns. The way we create new columns in a tidy workflow is by using the `mutate()` function. This function allows us to assign column values directly or by manipulating existing columns.
+
+The argument structure for `mutate()` is quite simple. We first name the new column we are creating, then say it is equivalent to some statement. For example:
+
+```{r}
+counted %>% 
+  mutate(x = 1) %>% 
+  select(x)
+```
+In this line of code we created a new column called `x` which is set to the value of `1` and then we select just that column. 
+
+Next we will use `mutate()` and functions from the `lubridate` package to get the month, day, and year of the date of the individual's death. As there is already a column called `date` which is of the date type (`class(counted$date)`) we can use the functions `month()`, `day()`, and `year()` from `lubridate` which return the integer corresponding with the date part we are trying to extract.
+
+```{r}
+library(lubridate)
+
+counted %>%
+  mutate(month = month(date),
+         day = day(date),
+         year = year(date)) %>% 
+  # select date and our new columns 
+  select(date, month, day, year)
+  
+```
+The new `year` column can be used to identify what year an individual was born. For this, we can subtract their age from the year of their death. *Note* we can use variables that were created in our mutate function call as we will do below. Since `year` was created in the mutate, our new `birth_year` variable must come after it. 
+
+```{r}
+counted_age <- counted %>%
+  mutate(month = month(date),
+         day = day(date),
+         year = year(date),
+        birth_year = year - age) %>% 
+  select(age, birth_year)
+
+counted_age
+```

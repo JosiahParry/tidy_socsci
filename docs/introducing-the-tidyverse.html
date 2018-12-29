@@ -25,7 +25,7 @@
 <meta name="author" content="Josiah Parry">
 
 
-<meta name="date" content="2018-12-04">
+<meta name="date" content="2018-12-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -100,9 +100,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">A Minimal Book Example</a></li>
-
-<li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prerequisites</a><ul>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#outline"><i class="fa fa-check"></i>Outline</a></li>
 </ul></li>
@@ -111,9 +108,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#creating-variables"><i class="fa fa-check"></i><b>1.2</b> Creating Variables</a></li>
 <li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#logical-operators"><i class="fa fa-check"></i><b>1.3</b> Logical operators</a></li>
 <li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#data-types"><i class="fa fa-check"></i><b>1.4</b> Data Types!</a></li>
-<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#data-structures"><i class="fa fa-check"></i><b>1.5</b> Data Structures</a></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#data-structures"><i class="fa fa-check"></i><b>1.5</b> Data Structures</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="intro.html"><a href="intro.html#vectors"><i class="fa fa-check"></i><b>1.5.1</b> Vectors</a></li>
+<li class="chapter" data-level="1.5.2" data-path="intro.html"><a href="intro.html#data-frames"><i class="fa fa-check"></i><b>1.5.2</b> data frames</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html"><i class="fa fa-check"></i><b>2</b> Introducing the <code>tidyverse</code></a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#recap"><i class="fa fa-check"></i><b>1.6</b> Recap</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#hw"><i class="fa fa-check"></i><b>1.7</b> HW</a><ul>
+<li class="chapter" data-level="1.7.1" data-path="intro.html"><a href="intro.html#hw-solutions"><i class="fa fa-check"></i><b>1.7.1</b> HW Solutions</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html"><i class="fa fa-check"></i><b>2</b> Introducing the <code>tidyverse</code></a><ul>
+<li class="chapter" data-level="2.1" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html#selecting-data"><i class="fa fa-check"></i><b>2.1</b> Selecting data</a></li>
+<li class="chapter" data-level="2.2" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html#filtering-your-data"><i class="fa fa-check"></i><b>2.2</b> Filtering your data</a></li>
+<li class="chapter" data-level="2.3" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html#chaining-functions"><i class="fa fa-check"></i><b>2.3</b> Chaining functions</a></li>
+<li class="chapter" data-level="2.4" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html#creating-manipulating-data"><i class="fa fa-check"></i><b>2.4</b> Creating / manipulating data</a></li>
+</ul></li>
 <li class="chapter" data-level="3" data-path="aggregation.html"><a href="aggregation.html"><i class="fa fa-check"></i><b>3</b> Aggregation</a></li>
 <li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> Visualization</a></li>
 <li class="chapter" data-level="5" data-path="ok-but-where-gis.html"><a href="ok-but-where-gis.html"><i class="fa fa-check"></i><b>5</b> Ok, but where? (GIS)</a></li>
@@ -122,9 +131,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8" data-path="supervised-learning.html"><a href="supervised-learning.html"><i class="fa fa-check"></i><b>8</b> supervised learning</a></li>
 <li class="chapter" data-level="9" data-path="unsupervised-learning.html"><a href="unsupervised-learning.html"><i class="fa fa-check"></i><b>9</b> Unsupervised learning</a></li>
 <li class="chapter" data-level="10" data-path="text-mining-natual-language-processing-nlp.html"><a href="text-mining-natual-language-processing-nlp.html"><i class="fa fa-check"></i><b>10</b> text-mining / natual language processing (nlp)</a></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
 </ul>
 
       </nav>
@@ -144,8 +150,297 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="introducing-the-tidyverse" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> Introducing the <code>tidyverse</code></h1>
-<p>select and filter</p>
+<p>Data frames will be the basis for many analyses. A set of packages makes working with them exceptionally easy. This is called the <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>. For most of our data manipulation a package called <a href="https://dplyr.tidyverse.org/"><code>dplyr</code></a> (d[ata] - plier ) will be the go to. For reading our data <a href="https://readr.tidyverse.org"><code>readr</code></a>. What is nice, though, is that we can download all of these packages together in what is called the <code>tidyverse</code>. When we load the <code>tidyverse</code> we load most of the packages associated with it.</p>
+<p>To do this run <code>install.packages(&quot;tidyverse&quot;)</code>. Load the package by running <code>library(tidyverse)</code>.</p>
+<p>Before we can get to working with data, we will have to bring it into our environment. The data will be coming from a project from The Guardian called <em>“The Counted”</em>. The Guardian describes it as follows.</p>
+<blockquote>
+<p>The Counted is a project by the Guardian – and you – working to count the number of people killed by police and other law enforcement agencies in the United States throughout 2015 and 2016, to monitor their demographics and to tell the stories of how they died.</p>
+</blockquote>
+<p>This dataset lives in the <code>counted.csv</code> file. <code>csv</code> stands for <em><strong>comma separated values</strong></em>. This means that each value has a comma in between it letting us know when the next column begins.</p>
+<p><code>readr</code> has a function called <code>read_csv()</code> which will take a csv and turn it into a dataframe for us to work with.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load tidyverse packages</span>
+<span class="kw">library</span>(tidyverse)
 
+
+<span class="co"># read in the dataset</span>
+counted &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/the-counted/counted.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   name = col_character(),
+##   age = col_double(),
+##   gender = col_character(),
+##   raceethnicity = col_character(),
+##   armed = col_character(),
+##   date = col_date(format = &quot;&quot;),
+##   streetaddress = col_character(),
+##   city = col_character(),
+##   state = col_character(),
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   classification = col_character(),
+##   lawenforcementagency = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 13
+##    name    age gender raceethnicity armed date       streetaddress city 
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;         &lt;chr&gt;
+##  1 Matt…    22 Male   Black         No    2015-01-01 1050 Carl Gr… Sava…
+##  2 Lewi…    47 Male   White         Fire… 2015-01-02 4505 SW Mast… Aloha
+##  3 Mich…    19 Male   White         No    2015-01-03 2600 Kaumual… Kaum…
+##  4 John…    23 Male   Hispanic/Lat… No    2015-01-03 500 North Ol… Wich…
+##  5 Tim …    53 Male   Asian/Pacifi… Fire… 2015-01-02 600 E Island… Shel…
+##  6 Matt…    32 Male   White         Non-… 2015-01-04 630 Valencia… San …
+##  7 Kenn…    22 Male   Hispanic/Lat… Fire… 2015-01-05 E Knox Rd an… Chan…
+##  8 Mich…    39 Male   Hispanic/Lat… Other 2015-01-05 818 31st St   Evans
+##  9 Patr…    25 Male   White         Knife 2015-01-06 800 Howard St Stoc…
+## 10 Bria…    26 Male   Black         No    2015-01-06 1618 E 123rd… Los …
+## # ... with 2,216 more rows, and 5 more variables: state &lt;chr&gt;,
+## #   latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, classification &lt;chr&gt;,
+## #   lawenforcementagency &lt;chr&gt;</code></pre>
+<div id="selecting-data" class="section level2">
+<h2><span class="header-section-number">2.1</span> Selecting data</h2>
+<p>In the last section we went over how to select individual columns using the <code>$</code> symbol and using bracket notation. Those methods can become quite cumbersome to work with. <code>dplyr</code> provides an alternative method for selecting individual columns. For this we can use the <code>select()</code> function. <code>select()</code> works quite intuitively. The first argument to the function is the dataframe which you select from. Every subsequent argument is the name or position of a column.</p>
+<p><em>Note: The first argument for [almost] every function in the <code>tidyverse</code> is the data. This will be very helpful to remember when we start using the pipe <code>%&gt;%</code></em>.</p>
+<p>Say we wanted to select the name of every person killed in 2015 and 2016. This is quite simple.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(counted, name)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 1
+##    name             
+##    &lt;chr&gt;            
+##  1 Matthew Ajibade  
+##  2 Lewis Lembke     
+##  3 Michael Kocher Jr
+##  4 John Quintero    
+##  5 Tim Elliott      
+##  6 Matthew Hoffman  
+##  7 Kenneth Buck     
+##  8 Michael Rodriguez
+##  9 Patrick Wetter   
+## 10 Brian Pickett    
+## # ... with 2,216 more rows</code></pre>
+<p>Using the same notation we can select multiple columns. For example for name and age. The order that you select columns affects the order in which they appear in your output. As I put name first followed by age, the first column is name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(counted, name, age)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 2
+##    name                age
+##    &lt;chr&gt;             &lt;dbl&gt;
+##  1 Matthew Ajibade      22
+##  2 Lewis Lembke         47
+##  3 Michael Kocher Jr    19
+##  4 John Quintero        23
+##  5 Tim Elliott          53
+##  6 Matthew Hoffman      32
+##  7 Kenneth Buck         22
+##  8 Michael Rodriguez    39
+##  9 Patrick Wetter       25
+## 10 Brian Pickett        26
+## # ... with 2,216 more rows</code></pre>
+<p>Simple enough? Try it out. Try selecting <code>age</code>, <code>state</code>, <code>armed</code>, and <code>lawenforcementagency</code>.</p>
+<p>Solution:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(counted, age, state, armed, lawenforcementagency)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 4
+##      age state armed              lawenforcementagency                   
+##    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;              &lt;chr&gt;                                  
+##  1    22 GA    No                 Chatham County Sheriff&#39;s Office        
+##  2    47 OR    Firearm            Washington County Sheriff&#39;s Office     
+##  3    19 HI    No                 Kauai Police Department                
+##  4    23 KS    No                 Wichita Police Department              
+##  5    53 WA    Firearm            Mason County Sheriff&#39;s Office          
+##  6    32 CA    Non-lethal firearm San Francisco Police Department        
+##  7    22 AZ    Firearm            Chandler Police Department             
+##  8    39 CO    Other              Evans Police Department                
+##  9    25 CA    Knife              Stockton Police Department             
+## 10    26 CA    No                 Los Angeles County Sheriff&#39;s Department
+## # ... with 2,216 more rows</code></pre>
+</div>
+<div id="filtering-your-data" class="section level2">
+<h2><span class="header-section-number">2.2</span> Filtering your data</h2>
+<p>Remember those logical statements in the last section? Those will be very useful now. We can constrain our dataset under a set of criteria to return a subset of the original data frame.</p>
+<p>We can use our existing knowledge of vectors and data frames to create a subset of the data. Using our knowledge of logical vectors and bracket subsets, we can somewhat easily find all of the 20 year olds in our dataset. A solution to this would require us to create a logical vector to indicate the rows where the age is 20. Then we would have to supply that vector as an index to our dataframe to get our desired result. It would look like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">index &lt;-<span class="st"> </span>counted<span class="op">$</span>age <span class="op">==</span><span class="st"> </span><span class="dv">20</span>
+
+counted[index,]</code></pre></div>
+<pre><code>## # A tibble: 50 x 13
+##    name    age gender raceethnicity armed date       streetaddress city 
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;         &lt;chr&gt;
+##  1 Jani…    20 Female Black         Knife 2015-02-19 Bellefonte Dr Char…
+##  2 &lt;NA&gt;     NA &lt;NA&gt;   &lt;NA&gt;          &lt;NA&gt;  NA         &lt;NA&gt;          &lt;NA&gt; 
+##  3 Shaq…    20 Male   Black         Fire… 2015-03-02 1st Ave and … Joli…
+##  4 Euge…    20 Male   White         Fire… 2015-03-17 13710 US Hwy… Onal…
+##  5 Jami…    20 Male   White         Other 2015-03-19 Kneuman Rd    Sumas
+##  6 Todd…    20 Male   Black         Fire… 2015-04-24 1505 E Main … Trin…
+##  7 Terr…    20 Male   Black         Other 2015-04-27 9500 Evergre… Detr…
+##  8 Fera…    20 Male   Arab-American No    2015-05-27 4600 E 15th … Long…
+##  9 Tyro…    20 Male   Black         Fire… 2015-06-22 700 Saw Mill… Pitt…
+## 10 Tyle…    20 Male   White         Fire… 2015-07-06 3300 SW 47th… Okla…
+## # ... with 40 more rows, and 5 more variables: state &lt;chr&gt;,
+## #   latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, classification &lt;chr&gt;,
+## #   lawenforcementagency &lt;chr&gt;</code></pre>
+<p><code>filter()</code> allows us to do this in a simpler manner. The first argument (suprise) is the dataframe that will be subsetted. Every following argument is a logical statement that will be applied to the dataset. Whenever the logical statement returns <code>TRUE</code> that row will be returned as shown in the above base R code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(counted, age <span class="op">==</span><span class="st"> </span><span class="dv">20</span>)</code></pre></div>
+<pre><code>## # A tibble: 34 x 13
+##    name    age gender raceethnicity armed date       streetaddress city 
+##    &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;         &lt;chr&gt;
+##  1 Jani…    20 Female Black         Knife 2015-02-19 Bellefonte Dr Char…
+##  2 Shaq…    20 Male   Black         Fire… 2015-03-02 1st Ave and … Joli…
+##  3 Euge…    20 Male   White         Fire… 2015-03-17 13710 US Hwy… Onal…
+##  4 Jami…    20 Male   White         Other 2015-03-19 Kneuman Rd    Sumas
+##  5 Todd…    20 Male   Black         Fire… 2015-04-24 1505 E Main … Trin…
+##  6 Terr…    20 Male   Black         Other 2015-04-27 9500 Evergre… Detr…
+##  7 Fera…    20 Male   Arab-American No    2015-05-27 4600 E 15th … Long…
+##  8 Tyro…    20 Male   Black         Fire… 2015-06-22 700 Saw Mill… Pitt…
+##  9 Tyle…    20 Male   White         Fire… 2015-07-06 3300 SW 47th… Okla…
+## 10 Fred…    20 Male   Black         Fire… 2015-07-12 5130 E Ponce… Ston…
+## # ... with 24 more rows, and 5 more variables: state &lt;chr&gt;,
+## #   latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, classification &lt;chr&gt;,
+## #   lawenforcementagency &lt;chr&gt;</code></pre>
+<p>Now, we can add another condition on to this function call to get all of the female twenty year olds.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(counted, age <span class="op">==</span><span class="st"> </span><span class="dv">20</span>, gender <span class="op">==</span><span class="st"> &quot;Female&quot;</span>)</code></pre></div>
+<pre><code>## # A tibble: 1 x 13
+##   name    age gender raceethnicity armed date       streetaddress city 
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt; &lt;date&gt;     &lt;chr&gt;         &lt;chr&gt;
+## 1 Jani…    20 Female Black         Knife 2015-02-19 Bellefonte Dr Char…
+## # ... with 5 more variables: state &lt;chr&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;,
+## #   classification &lt;chr&gt;, lawenforcementagency &lt;chr&gt;</code></pre>
+</div>
+<div id="chaining-functions" class="section level2">
+<h2><span class="header-section-number">2.3</span> Chaining functions</h2>
+<p>The true power of the <code>tidyverse</code> comes from it’s ability to chain functions after eachother. This is all enabled by the forward pipe operator <code>%&gt;%</code>. The pipe operator takes the output of a function and provides that output as the first argument in the following function. You’ve seen how the first argument for every function here has been the data this is done purposefully to enable the use of the pipe.</p>
+<p>As always, the most helpful way to wrap your head around this is to see it in action. Let’s take one of the lines of code we used above and adapt it to use a pipe. We will select the name column of our data again. Previously we wrote <code>select(data_frame, col_name)</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(counted, name)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 1
+##    name             
+##    &lt;chr&gt;            
+##  1 Matthew Ajibade  
+##  2 Lewis Lembke     
+##  3 Michael Kocher Jr
+##  4 John Quintero    
+##  5 Tim Elliott      
+##  6 Matthew Hoffman  
+##  7 Kenneth Buck     
+##  8 Michael Rodriguez
+##  9 Patrick Wetter   
+## 10 Brian Pickett    
+## # ... with 2,216 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(name)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 1
+##    name             
+##    &lt;chr&gt;            
+##  1 Matthew Ajibade  
+##  2 Lewis Lembke     
+##  3 Michael Kocher Jr
+##  4 John Quintero    
+##  5 Tim Elliott      
+##  6 Matthew Hoffman  
+##  7 Kenneth Buck     
+##  8 Michael Rodriguez
+##  9 Patrick Wetter   
+## 10 Brian Pickett    
+## # ... with 2,216 more rows</code></pre>
+<p>This gets the basic point across but doesn’t adequately illustrate the power. So let’s combine <code>filter()</code> and <code>select()</code> to get the names of all 20 year olds in our dataset. To do this we will first filter our dataset, then pipe it to our the select function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(age <span class="op">==</span><span class="st"> </span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(name)</code></pre></div>
+<pre><code>## # A tibble: 34 x 1
+##    name             
+##    &lt;chr&gt;            
+##  1 Janisha Fonville 
+##  2 Shaquille Barrow 
+##  3 Eugene Smith II  
+##  4 Jamison Childress
+##  5 Todd Dye         
+##  6 Terrance Kellom  
+##  7 Feras Morad      
+##  8 Tyrone Harris    
+##  9 Tyler Rogers     
+## 10 Frederick Farmer 
+## # ... with 24 more rows</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">glimpse</span>(counted)</code></pre></div>
+<pre><code>## Observations: 2,226
+## Variables: 13
+## $ name                 &lt;chr&gt; &quot;Matthew Ajibade&quot;, &quot;Lewis Lembke&quot;, &quot;Micha...
+## $ age                  &lt;dbl&gt; 22, 47, 19, 23, 53, 32, 22, 39, 25, 26, 3...
+## $ gender               &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;...
+## $ raceethnicity        &lt;chr&gt; &quot;Black&quot;, &quot;White&quot;, &quot;White&quot;, &quot;Hispanic/Lati...
+## $ armed                &lt;chr&gt; &quot;No&quot;, &quot;Firearm&quot;, &quot;No&quot;, &quot;No&quot;, &quot;Firearm&quot;, &quot;...
+## $ date                 &lt;date&gt; 2015-01-01, 2015-01-02, 2015-01-03, 2015...
+## $ streetaddress        &lt;chr&gt; &quot;1050 Carl Griffin Dr&quot;, &quot;4505 SW Masters ...
+## $ city                 &lt;chr&gt; &quot;Savannah&quot;, &quot;Aloha&quot;, &quot;Kaumakani&quot;, &quot;Wichit...
+## $ state                &lt;chr&gt; &quot;GA&quot;, &quot;OR&quot;, &quot;HI&quot;, &quot;KS&quot;, &quot;WA&quot;, &quot;CA&quot;, &quot;AZ&quot;,...
+## $ latitude             &lt;dbl&gt; 32.06669, 45.48747, 21.93335, 37.69380, 4...
+## $ longitude            &lt;dbl&gt; -81.16788, -122.89170, -159.64197, -97.28...
+## $ classification       &lt;chr&gt; &quot;Death in custody&quot;, &quot;Gunshot&quot;, &quot;Struck by...
+## $ lawenforcementagency &lt;chr&gt; &quot;Chatham County Sheriff&#39;s Office&quot;, &quot;Washi...</code></pre>
+</div>
+<div id="creating-manipulating-data" class="section level2">
+<h2><span class="header-section-number">2.4</span> Creating / manipulating data</h2>
+<p>Within most datasets there are what are called latent variables. These are varibles that can be created by manipulating one or more columns. The way we create new columns in a tidy workflow is by using the <code>mutate()</code> function. This function allows us to assign column values directly or by manipulating existing columns.</p>
+<p>The argument structure for <code>mutate()</code> is quite simple. We first name the new column we are creating, then say it is equivalent to some statement. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">x =</span> <span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(x)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 1
+##        x
+##    &lt;dbl&gt;
+##  1     1
+##  2     1
+##  3     1
+##  4     1
+##  5     1
+##  6     1
+##  7     1
+##  8     1
+##  9     1
+## 10     1
+## # ... with 2,216 more rows</code></pre>
+<p>In this line of code we created a new column called <code>x</code> which is set to the value of <code>1</code> and then we select just that column.</p>
+<p>Next we will use <code>mutate()</code> and functions from the <code>lubridate</code> package to get the month, day, and year of the date of the individual’s death. As there is already a column called <code>date</code> which is of the date type (<code>class(counted$date)</code>) we can use the functions <code>month()</code>, <code>day()</code>, and <code>year()</code> from <code>lubridate</code> which return the integer corresponding with the date part we are trying to extract.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(lubridate)
+
+counted <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">month =</span> <span class="kw">month</span>(date),
+         <span class="dt">day =</span> <span class="kw">day</span>(date),
+         <span class="dt">year =</span> <span class="kw">year</span>(date)) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="co"># select date and our new columns </span>
+<span class="st">  </span><span class="kw">select</span>(date, month, day, year)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 4
+##    date       month   day  year
+##    &lt;date&gt;     &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;
+##  1 2015-01-01     1     1  2015
+##  2 2015-01-02     1     2  2015
+##  3 2015-01-03     1     3  2015
+##  4 2015-01-03     1     3  2015
+##  5 2015-01-02     1     2  2015
+##  6 2015-01-04     1     4  2015
+##  7 2015-01-05     1     5  2015
+##  8 2015-01-05     1     5  2015
+##  9 2015-01-06     1     6  2015
+## 10 2015-01-06     1     6  2015
+## # ... with 2,216 more rows</code></pre>
+<p>The new <code>year</code> column can be used to identify what year an individual was born. For this, we can subtract their age from the year of their death. <em>Note</em> we can use variables that were created in our mutate function call as we will do below. Since <code>year</code> was created in the mutate, our new <code>birth_year</code> variable must come after it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted_age &lt;-<span class="st"> </span>counted <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">month =</span> <span class="kw">month</span>(date),
+         <span class="dt">day =</span> <span class="kw">day</span>(date),
+         <span class="dt">year =</span> <span class="kw">year</span>(date),
+        <span class="dt">birth_year =</span> year <span class="op">-</span><span class="st"> </span>age) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(age, birth_year)
+
+counted_age</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 2
+##      age birth_year
+##    &lt;dbl&gt;      &lt;dbl&gt;
+##  1    22       1993
+##  2    47       1968
+##  3    19       1996
+##  4    23       1992
+##  5    53       1962
+##  6    32       1983
+##  7    22       1993
+##  8    39       1976
+##  9    25       1990
+## 10    26       1989
+## # ... with 2,216 more rows</code></pre>
+
+</div>
 </div>
             </section>
 
@@ -186,10 +481,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["tidy_socsci.pdf", "tidy_socsci.epub"],
-"toc": {
-"collapse": "subsection"
-}
+"download": ["tidy_socsci.pdf", "tidy_socsci.epub"]
 });
 });
 </script>
