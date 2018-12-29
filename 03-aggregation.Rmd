@@ -1,3 +1,52 @@
 # Aggregation
 
+Now that we have a basic understanding of how to manipulate our dataset, summarising the dataset into a few useful metrics is important. These summary stats will be useful in visualizing our data. There are three key functions that will be used `count()`, `group_by()`, and `summarise()`. When used creatively, `group_by()` and `summarise()` can provide some extremely insightful metrics. 
+
+## Counting
+
+We will start with `count()`. Counting is the most basic(and useful) ooperation that we can do. To `count()` the number of observations in a dataframe, just pass the the tibble to the `count()` function either directly or with a pipe (` %>% `).
+
+```{r}
+library(tidyverse)
+counted <- read_csv("data/the-counted/counted.csv")
+
+# count how many rows 
+count(counted)
+```
+
+Here we see that there are `r count(counted)` recorded deaths in this dataset. That is a lot. We can pass other column names as additional arguments to count subsets of our data. So if we pass the `gender` column to `count()` we can see how many deaths there are by reported `gender` (I hesitate to use this column title, I would usually opt for `sex` as it is less ambiguous read the wiki page [here](https://en.wikipedia.org/wiki/Sex_and_gender_distinction) for more). 
+
+```{r}
+counted %>% 
+  count(gender)
+```
+
+Ah, so here we see that the creators of this dataset are aware of gender non-conforming identities. We can also see that there seems to be a large gender discrepancy. These large numbers are informative, but often percentages or proportions are used to provide a bit more context. To extract this information we will need to utilise `group_by()` and `summarise()`. But first, we will go over `group_by()` briefly. 
+
+## sub-setting
+
+In the above example of `count()` we counted subsets of our data by telling `count()` which column to subset by. We can actually skip this step if we explicitly create a grouped data frame. This is done by using `group_by()`. 
+As you probably guessed, we supply a column name to group by and create subsets from. On the surface this doesn't do much. But if we group our dataframe and then look at the object's class we will see that is has the class `grouped_df`, or _grouped data frame_. 
+
+```{r}
+ counted %>% 
+  group_by(gender) %>% 
+  class()
+```
+
+Now that we know how to group the data, lets try couting our groups. 
+
+```{r}
+counted %>% 
+  group_by(gender) %>% 
+  count()
+```
+
+In the above code we get the same result as writing `count(counted, gender)`, but in a slightly more verbose manner. But this is going to be useful in our summarisation!
+
+## Summarising
+
+
+Here we see that there are `r count(counted)` recorded deaths in this dataset. That is a lot. But how many were there in each year? Currently, our dataset only has a column called `date` which contains the date of the event. Within that variable we can extract the year. 
+
 count, group_by, summarise, 

@@ -439,6 +439,41 @@ counted_age</code></pre></div>
 ##  9    25       1990
 ## 10    26       1989
 ## # ... with 2,216 more rows</code></pre>
+<p>A useful function for viewing our dataframes is <code>arrange()</code> it allows us to sort the datset by a given column. By default is sorts in ascending order.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted_age <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(birth_year)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 2
+##      age birth_year
+##    &lt;dbl&gt;      &lt;dbl&gt;
+##  1    87       1928
+##  2    87       1929
+##  3    85       1930
+##  4    86       1930
+##  5    86       1930
+##  6    83       1932
+##  7    84       1932
+##  8    83       1933
+##  9    82       1934
+## 10    80       1936
+## # ... with 2,216 more rows</code></pre>
+<p>To sort a dataframe in desecending order wrap the column name in the <code>desc()</code> function (if the column is numeric you could also put a <code>-</code> in front of the column name).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted_age <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="co"># arrange(desc(birth_year))</span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>birth_year)</code></pre></div>
+<pre><code>## # A tibble: 2,226 x 2
+##      age birth_year
+##    &lt;dbl&gt;      &lt;dbl&gt;
+##  1     6       2009
+##  2    10       2006
+##  3    12       2004
+##  4    13       2003
+##  5    14       2002
+##  6    15       2001
+##  7    15       2001
+##  8    15       2001
+##  9    15       2000
+## 10    15       2000
+## # ... with 2,216 more rows</code></pre>
 
 </div>
 </div>

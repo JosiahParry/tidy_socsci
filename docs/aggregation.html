@@ -123,7 +123,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.3" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html#chaining-functions"><i class="fa fa-check"></i><b>2.3</b> Chaining functions</a></li>
 <li class="chapter" data-level="2.4" data-path="introducing-the-tidyverse.html"><a href="introducing-the-tidyverse.html#creating-manipulating-data"><i class="fa fa-check"></i><b>2.4</b> Creating / manipulating data</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="aggregation.html"><a href="aggregation.html"><i class="fa fa-check"></i><b>3</b> Aggregation</a></li>
+<li class="chapter" data-level="3" data-path="aggregation.html"><a href="aggregation.html"><i class="fa fa-check"></i><b>3</b> Aggregation</a><ul>
+<li class="chapter" data-level="3.1" data-path="aggregation.html"><a href="aggregation.html#counting"><i class="fa fa-check"></i><b>3.1</b> Counting</a></li>
+<li class="chapter" data-level="3.2" data-path="aggregation.html"><a href="aggregation.html#sub-setting"><i class="fa fa-check"></i><b>3.2</b> sub-setting</a></li>
+<li class="chapter" data-level="3.3" data-path="aggregation.html"><a href="aggregation.html#summarising"><i class="fa fa-check"></i><b>3.3</b> Summarising</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="visualization.html"><a href="visualization.html"><i class="fa fa-check"></i><b>4</b> Visualization</a></li>
 <li class="chapter" data-level="5" data-path="ok-but-where-gis.html"><a href="ok-but-where-gis.html"><i class="fa fa-check"></i><b>5</b> Ok, but where? (GIS)</a></li>
 <li class="chapter" data-level="6" data-path="statistical-modelling-regression.html"><a href="statistical-modelling-regression.html"><i class="fa fa-check"></i><b>6</b> statistical modelling (Regression)</a></li>
@@ -150,8 +154,71 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="aggregation" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Aggregation</h1>
+<p>Now that we have a basic understanding of how to manipulate our dataset, summarising the dataset into a few useful metrics is important. These summary stats will be useful in visualizing our data. There are three key functions that will be used <code>count()</code>, <code>group_by()</code>, and <code>summarise()</code>. When used creatively, <code>group_by()</code> and <code>summarise()</code> can provide some extremely insightful metrics.</p>
+<div id="counting" class="section level2">
+<h2><span class="header-section-number">3.1</span> Counting</h2>
+<p>We will start with <code>count()</code>. Counting is the most basic(and useful) ooperation that we can do. To <code>count()</code> the number of observations in a dataframe, just pass the the tibble to the <code>count()</code> function either directly or with a pipe (<code>%&gt;%</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+counted &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/the-counted/counted.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   name = col_character(),
+##   age = col_double(),
+##   gender = col_character(),
+##   raceethnicity = col_character(),
+##   armed = col_character(),
+##   date = col_date(format = &quot;&quot;),
+##   streetaddress = col_character(),
+##   city = col_character(),
+##   state = col_character(),
+##   latitude = col_double(),
+##   longitude = col_double(),
+##   classification = col_character(),
+##   lawenforcementagency = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># count how many rows </span>
+<span class="kw">count</span>(counted)</code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##       n
+##   &lt;int&gt;
+## 1  2226</code></pre>
+<p>Here we see that there are 2226 recorded deaths in this dataset. That is a lot. We can pass other column names as additional arguments to count subsets of our data. So if we pass the <code>gender</code> column to <code>count()</code> we can see how many deaths there are by reported <code>gender</code> (I hesitate to use this column title, I would usually opt for <code>sex</code> as it is less ambiguous read the wiki page <a href="https://en.wikipedia.org/wiki/Sex_and_gender_distinction">here</a> for more).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">count</span>(gender)</code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   gender             n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 Female           110
+## 2 Male            2115
+## 3 Non-conforming     1</code></pre>
+<p>Ah, so here we see that the creators of this dataset are aware of gender non-conforming identities. We can also see that there seems to be a large gender discrepancy. These large numbers are informative, but often percentages or proportions are used to provide a bit more context. To extract this information we will need to utilise <code>group_by()</code> and <code>summarise()</code>. But first, we will go over <code>group_by()</code> briefly.</p>
+</div>
+<div id="sub-setting" class="section level2">
+<h2><span class="header-section-number">3.2</span> sub-setting</h2>
+<p>In the above example of <code>count()</code> we counted subsets of our data by telling <code>count()</code> which column to subset by. We can actually skip this step if we explicitly create a grouped data frame. This is done by using <code>group_by()</code>. As you probably guessed, we supply a column name to group by and create subsets from. On the surface this doesn’t do much. But if we group our dataframe and then look at the object’s class we will see that is has the class <code>grouped_df</code>, or <em>grouped data frame</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> counted <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">class</span>()</code></pre></div>
+<pre><code>## [1] &quot;grouped_df&quot; &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<p>Now that we know how to group the data, lets try couting our groups.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">counted <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(gender) <span class="op">%&gt;%</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">count</span>()</code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+## # Groups:   gender [3]
+##   gender             n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 Female           110
+## 2 Male            2115
+## 3 Non-conforming     1</code></pre>
+<p>In the above code we get the same result as writing <code>count(counted, gender)</code>, but in a slightly more verbose manner. But this is going to be useful in our summarisation!</p>
+</div>
+<div id="summarising" class="section level2">
+<h2><span class="header-section-number">3.3</span> Summarising</h2>
+<p>Here we see that there are 2226 recorded deaths in this dataset. That is a lot. But how many were there in each year? Currently, our dataset only has a column called <code>date</code> which contains the date of the event. Within that variable we can extract the year.</p>
 <p>count, group_by, summarise,</p>
 
+</div>
 </div>
             </section>
 

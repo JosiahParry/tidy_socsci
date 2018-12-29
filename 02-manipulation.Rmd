@@ -144,3 +144,19 @@ counted_age <- counted %>%
 
 counted_age
 ```
+
+A useful function for viewing our dataframes is `arrange()` it allows us to sort the datset by a given column. By default is sorts in ascending order. 
+
+```{r}
+counted_age %>% 
+  arrange(birth_year)
+```
+
+To sort a dataframe in desecending order wrap the column name in the `desc()` function (if the column is numeric you could also put a `-` in front of the column name).
+
+```{r}
+counted_age %>% 
+# arrange(desc(birth_year))
+  arrange(-birth_year)
+```
+
